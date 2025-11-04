@@ -8,7 +8,6 @@ string(TIMESTAMP BUILD_DATE "%Y-%m-%dT%H:%M:%S")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-
 # Include dependencies
 find_package(fmt REQUIRED)
 find_package(nlohmann_json REQUIRED)
@@ -17,6 +16,9 @@ find_package(Catch2 3 REQUIRED)
 
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.in" "${CMAKE_CURRENT_BINARY_DIR}/include/config.h" @ONLY)
 include_directories("${CMAKE_CURRENT_BINARY_DIR}/include") # add the output path to the include PATH
+
+# ⭐ WICHTIG: Include-Verzeichnis für deine Header hinzufügen
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 # add the executable
 add_executable(${PROJECT_NAME} main.cpp)
